@@ -1,27 +1,32 @@
-import products from './mocks/products.json';
-import { Products } from "./components/Products.js";
 import { useState } from 'react';
-
+import { Products } from './components/Products'; // Importa el componente Products desde su ubicación correcta
+import productsData from './mocks/products.json'; 
 
 function App() {
-  //const [product] = useState(products);
+  const [products] = useState(productsData.products || []);
   const [filters, setFilters] = useState({
     category: 'all',
-    minprice: 0
+    minPrice: 0
   });
 
-  const filterProducts = (products) => {
+  // Utiliza useState para inicializar los productos con los datos importados
+
+  const filterProducts = () => {
     return products.filter(product => {
-      return product.price >= product.minprice &&
-      (
-        filters.category === 'all' ||
-        product.category === filters.category
-      )
-    })
-  }
+      return (
+        product.price >= filters.minPrice &&
+        (
+          filters.category === 'all' ||
+          product.category === filters.category
+        )
+      );
+    });
+  };
+
+  const filteredProducts = filterProducts();
 
   return (
-    <Products products={products} />
+    <Products products={filteredProducts} />
   );
 }
 
