@@ -1,3 +1,4 @@
+import '../styles/products.css'
 import { AddToCartIcon } from "./Icons";
 
 
@@ -6,7 +7,7 @@ export function Products ({ products }) {
     return (
         <main className="products">
             <ul>
-                {products.products.map(product => (
+                {products.products.slice(0, 10).map(product => (
                     <li key={product.id}>
                         <img 
                             src={product.thumbnail} 
