@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Products } from './components/Products'; // Importa el componente Products desde su ubicación correcta
 import productsData from './mocks/products.json'; 
+import { Headers } from './components/Header';
 
 function App() {
   const [products] = useState(productsData.products || []);
@@ -26,7 +27,10 @@ function App() {
   const filteredProducts = filterProducts();
 
   return (
-    <Products products={filteredProducts} />
+    <>
+      <Headers changeFilters={setFilters}/>
+      <Products products={filteredProducts} />
+    </>
   );
 }
 
