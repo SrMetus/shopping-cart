@@ -3,14 +3,11 @@ import { Products } from './components/Products'; // Importa el componente Produ
 import productsData from './mocks/products.json'; 
 import { Headers } from './components/Header';
 
-function App() {
-  const [products] = useState(productsData.products || []);
+function useFilters(products) {
   const [filters, setFilters] = useState({
     category: 'all',
     minPrice: 0
   });
-
-  // Utiliza useState para inicializar los productos con los datos importados
 
   const filterProducts = () => {
     return products.filter(product => {
@@ -23,8 +20,13 @@ function App() {
       );
     });
   };
+  return { filterProducts, setFilters }
+}
 
-  const filteredProducts = filterProducts();
+function App() {
+  const [products] = useState(productsData.products || []);
+  const { filterProducts, setFilters } = useFilters(products);
+  const filteredProducts = filterProducts(products);
 
   return (
     <>
