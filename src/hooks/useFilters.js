@@ -14,5 +14,5 @@ export function useFilters(products) {
         );
       });
     };
-    return { filterProducts, setFilters }
+    return { filters, filterProducts, setFilters }
   }

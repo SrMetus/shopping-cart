@@ -2,7 +2,6 @@ import '../styles/products.css'
 import { AddToCartIcon } from "./Icons";
 
 export function Products ({ products }) {
-    console.log(products.products);
     return (
         <main className="products">
             <ul>

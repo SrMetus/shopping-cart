@@ -3,6 +3,7 @@ import { Products } from './components/Products'; // Importa el componente Produ
 import productsData from './mocks/products.json'; 
 import { Headers } from './components/Header';
 import { useFilters } from './hooks/useFilters';
+import { Cart } from './components/Cart';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
       <Headers />
+      <Cart />
       <Products products={filteredProducts} />
     </>
   );
