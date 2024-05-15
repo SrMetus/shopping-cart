@@ -1,7 +1,9 @@
+import { useCart } from '../hooks/useCart';
 import '../styles/products.css'
 import { AddToCartIcon } from "./Icons";
 
 export function Products ({ products }) {
+    const { AddToCart, cart } = useCart();
     return (
         <main className="products">
             <ul>
